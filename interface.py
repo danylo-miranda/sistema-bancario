@@ -49,21 +49,19 @@ class InterfaceGrafica:
     def sacar(self):
         try:
             valor = float(self.entry_valor.get())
-            if valor > self.conta.saldo:  # Verifica o saldo ANTES do saque
-                self.exibir_mensagem("Saldo insuficiente para realizar o saque", "red")
-            elif valor <= 0:
-                self.exibir_mensagem("Valor inválido. Digite um número positivo.", "red")
+            mensagem = self.conta.sacar(valor)  # Obtém a mensagem da função sacar
+            if "sucesso" in mensagem.lower():
+                self.exibir_mensagem(mensagem, "green")
             else:
-                self.conta.sacar(valor)
-                self.atualizar_saldo()
-                self.exibir_mensagem("Saque realizado com sucesso!", "green")
+                self.exibir_mensagem(mensagem, "red")
+            self.atualizar_saldo()
         except ValueError:
             self.exibir_mensagem("Valor inválido. Digite um número válido.", "red")
 
 
     def exibir_mensagem(self, mensagem, cor="red"):
         self.label_mensagem.config(text=mensagem, fg=cor)
-        self.master.after(3000, lambda: self.label_mensagem.config(text=""))  # Limpa a mensagem após 3 segundos
+        self.master.after(6000, lambda: self.label_mensagem.config(text=""))  # Limpa a mensagem após 3 segundos
 
     def exibir_extrato(self):
         self.text_extrato.delete(1.0, tk.END)  # Limpa o extrato anterior

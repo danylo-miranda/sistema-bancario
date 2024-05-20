@@ -4,13 +4,17 @@ Atendendo a solicitação do cliente, que, solicitou o desenvolvimento de um sis
 
 ## Índice
 
-* [Linguagem]()
+* [Iniciar](#iniciar)
+* [Linguagem](#linguagem-utilizada)
 * [Bibliotecas Utilizadas](#bibliotecas-utilizadas)
 * [Versão](#versão)
 * [Detalhamento](#detalhamento-das-operações)
 * [Interface](#interface-gráfica)
 * [Contato](#contato)
 
+## Iniciar
+
+* Execute o arquivo app.py
 
 ## Linguagem utilizada
 

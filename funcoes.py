@@ -7,6 +7,7 @@ class ContaBancaria:
         self.extrato = ""
         self.num_saques = 0
         self.LIMITE_SAQUES = 3
+        self.horarios_saques = []
 
     def depositar(self, valor):
         if valor > 0:
@@ -21,19 +22,24 @@ class ContaBancaria:
         excedeu_limite = valor > self.limite
         excedeu_saques = self.num_saques >= self.LIMITE_SAQUES
 
-        if excedeu_saldo:
-            print("Operação falhou! Saldo insuficiente.")
-        elif excedeu_limite:
-            print("Operação falhou! Valor do saque excede o limite permitido.")
-        elif excedeu_saques:
-            print("Operação falhou! Número máximo de saques excedido.")
-        elif valor > 0:
+        agora = datetime.datetime.now()
+        saques_24h = [saque for saque in self.horarios_saques if (agora - saque).total_seconds() <= 24 * 60 * 60]
+
+        if len(saques_24h) >= self.LIMITE_SAQUES:
+            return "Operação falhou! Número máximo de saques diários excedido."
+        elif valor > self.saldo:
+            return "Operação falhou! Saldo insuficiente."
+        elif valor > self.limite:
+            return "Operação falhou! Valor do saque excede o limite permitido."
+        elif valor <= 0:
+            return "Operação falhou! O valor informado é inválido."
+        else:
             self.saldo -= valor
-            data_hora = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            data_hora = agora.strftime("%d/%m/%Y %H:%M:%S")
             self.extrato += f"Saque: R$ {valor:.2f} em {data_hora}\n"
             self.num_saques += 1
-        else:
-            print("Operação falhou! O valor informado é inválido.")
+            self.horarios_saques.append(agora)
+            return "Saque realizado com sucesso!"
 
     def exibir_extrato(self):
         print("\n====================EXTRATO====================")
