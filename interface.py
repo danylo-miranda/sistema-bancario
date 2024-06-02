@@ -220,10 +220,7 @@ class Apllication:  # Renomeie a classe para Apllication (com dois "p")
 
         self.botao_gerenciar_banco = tk.Button(master, text="Gerenciar Banco", command=self.abrir_gerenciador_banco)
         self.botao_gerenciar_banco.pack(pady=10)
-
-        self.botao_acessar_conta = tk.Button(master, text="Acessar Conta", command=self.acessar_conta)  # Novo botão
-        self.botao_acessar_conta.pack(pady=10)
-
+        
         self.gerenciador_banco = GerenciadorBanco  # Instância do GerenciadorBanco
 
 
@@ -231,12 +228,5 @@ class Apllication:  # Renomeie a classe para Apllication (com dois "p")
         if not hasattr(self, 'janela_gerenciador') or not self.janela_gerenciador.winfo_exists():
             self.janela_gerenciador = tk.Toplevel(self.master)
             self.gerenciador_banco = GerenciadorBanco(self.janela_gerenciador)
-
-    def acessar_conta(self):
-        if self.gerenciador_banco is None:
-            messagebox.showerror("Erro", "Gerenciador do banco não inicializado. Acesse-o primeiro.")
-            return
-
-        self.gerenciador_banco.acessar_conta()
     
     
