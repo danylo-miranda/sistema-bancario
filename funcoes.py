@@ -48,9 +48,9 @@ class ContaBancaria:
         print("=================================================")
 
 
-    def salvar_extrato_csv(self, nome_arquivo="extrato.csv"):
+    def salvar_extrato_csv(self, nome_arquivo="extrato.csv"): # Função salva em um arquivo .csv no diretório do projeto os dados das movimentações realizadas no sistema
         try:
-            with open(nome_arquivo, "w", newline="") as arquivo_csv:  # Corrigido aqui
+            with open(nome_arquivo, "w", newline="") as arquivo_csv:
                 escritor_csv = csv.writer(arquivo_csv)
 
                 # Escrever o cabeçalho com os nomes das colunas
