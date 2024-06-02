@@ -7,7 +7,7 @@ Atendendo a solicitação do cliente, que, solicitou o desenvolvimento de um sis
 * [Iniciar](#iniciar)
 * [Linguagem](#linguagem-utilizada)
 * [Bibliotecas Utilizadas](#bibliotecas-utilizadas)
-* [Versão](#versão)
+* [Versão](#versões)
 * [Detalhamento](#detalhamento-das-operações)
 * [Interface](#interface-gráfica)
 * [Contato](#contato)
@@ -28,13 +28,64 @@ Atendendo a solicitação do cliente, que, solicitou o desenvolvimento de um sis
 * csv
 * datetime
 
-## Versão
+## Versões 
 
-* A primeira versão do sistema contará com apenas 3 operações :
+## Versões 
+
+* Notas tecnicas do lançamento e divulgação da versão beta do projeto <font color="orange">(0.1.1)</font> 
+
+A primeira versão do sistema contará com apenas 3 operações :
+---
 
 | Depósito | Saque | Extrato|
 |----------|-------|--------|
-| Deve ser possível depositar valores positivos para a conta bancária.| 3 saques diários com limite máximo de R$500,00 por saque. | Essa operação deve listar todos os depósitos e saques realizados na conta.|
+| Deve ser possível depositar valores positivos para a conta bancária| 3 saques diários com limite máximo de R$500,00 por saque | Essa operação deve listar todos os depósitos e saques realizados na conta|
+
+* <font color="orange">**Interface:**</font>Para uma melhor experiência do usuário, desenvolvi uma interface gráfica.
+
+-
+
+* Notas tecnicas da atualização <font color="orange">(0.1.2)</font>
+
+
+ A segunda versão do sistema  traz a implementação de cadastro de clientes, conta corrente além de melhorias nas funções do sistema :
+ ---
+
+* <font color="pink">**Novidades:**</font>Apresentando o cadastro de clientes:
+
+| Criar Usuario | Criar Conta Corrente |
+|---------------|----------------------|
+| Cadastro de cliente | Vincular conta corrente ao usuario|
+
+* <font color="orange">**Criar usuário:**</font>O programa deve armazenar os usuários em uma lista, um usuário é composto porÇ nome, data de nascimento, cpf e enddereço. Oendereço é uma string com o formato (logradouro, numero, bairro, cidade/sigla estado). Deve ser armazenado somento os numeros do cpf. Não será cadastrado 2 usuarios com o mesmo cpf.
+
+* <font color="orange">**Criar conta corrente:**</font>O programa deve armazenar contas em uma lista, uma conta é compostapor: agência, número da conta e usuario. O numero da conta é sequencial, iniciando em 1. O número da agência é fixo:"0001" .O usuário agora pode ter mais de uma conta.
+
+-
+
+* <font color="orange"> **Sacar:** </font>A função sacar receberá os argumentos apenas por nome (keyword only): 
+
+|Ex. de argumentos | Ex. de retorno |
+|-----------------------|---------------------|
+| Saldo, valor, extrato, limite, numero_saques, limite_saques| Saldo e extrato |
+
+-
+
+* <font color="orange">**Depositar:**</font>A função depositar receberá uma atualização e passrá a receber os argumentos apenas por posição(positional only):
+
+|Ex. de argumentos | Ex. de retorno |
+|-----------------------|---------------------|
+| Saldo, valor, extrato | Saldo e extrato |
+
+-
+
+* <font color="orange">**Extrato:**</font>A função extrato receberá atualizações onde deve receber os argumentos por posição e nome (positional only e keyword only):
+
+|Ex. argumentos posicionais | Ex. argumentos nomeados |
+|-----------------------|---------------------|
+| Saldo |  Extrato |
+
+-
 
 ## Detalhamento das operações
 
